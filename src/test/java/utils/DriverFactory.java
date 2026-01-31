@@ -5,11 +5,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class DriverFactory {
 
-    static WebDriver driver;
+    private static WebDriver driver;
 
     public static void initDriver() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
+        if (driver == null) {
+            driver = new ChromeDriver();
+            driver.manage().window().maximize();
+        }
     }
 
     public static WebDriver getDriver() {
@@ -17,6 +19,9 @@ public class DriverFactory {
     }
 
     public static void quitDriver() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }

@@ -1,14 +1,13 @@
 package hooks;
 
-
+import io.cucumber.java.After;
 import io.cucumber.java.Before;
-import org.junit.After;
 import utils.DriverFactory;
 
 public class Hooks {
 
     @Before
-    public void setup() {
+    public void setUp() {
         DriverFactory.initDriver();
     }
 
